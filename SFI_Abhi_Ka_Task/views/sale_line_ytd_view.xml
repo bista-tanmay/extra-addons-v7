@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_sale_line_ytd_tree" model="ir.ui.view">
+            <field name="name">sale.line.ytd.tree</field>
+            <field name="model">sale.line.ytd</field>
+            <field name="arch" type="xml">
+                <tree string="Sale line YTD">
+                    <field name="name" invisible="1"/>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="product_id"/>
+                    <field name="pre_profit_amt"/>
+                    <field name="pre_avg_profit"/>
+                    <field name="pre_net_subtotal" invisible="1"/>
+                    <field name="pre_qty"/>
+                    <field name="pre_unit_price" invisible="1"/>
+                    <field name="pre_subtotal"/>
+                    <field name="curr_profit_amt"/>
+                    <field name="curr_avg_profit"/>
+                    <field name="curr_net_subtotal" invisible="1"/>
+                    <field name="curr_qty"/>
+                    <field name="curr_unit_price" invisible="1"/>
+                    <field name="curr_subtotal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_sale_line_ytd" model="ir.actions.act_window">
+            <field name="name">Comparison Sale Line YTD</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.line.ytd</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sale_line_ytd_tree"/>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="SFI_Abhi_Ka_Task_view_sale_line_ytd_tree" model="ir.ui.view">
+            <field name="model">sale.line.ytd</field>
+            <field name="inherit_id" ref="SFI_Abhi_Ka_Task.view_sale_line_ytd_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='curr_subtotal']" position="after">
+                    <field name="percent_change_profit"/>
+                    <field name="percent_change_qty"/>
+                    <field name="percent_change_subtotal"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+

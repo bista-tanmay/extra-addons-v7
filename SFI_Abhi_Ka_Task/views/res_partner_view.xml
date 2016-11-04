@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--Inherit Form View to Modify it-->
+       <record id="base_view_partner_form_mew" model="ir.ui.view">
+           <field name="model">res.partner</field>
+           <field name="inherit_id" ref="base.view_partner_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//form/sheet/div[@class='oe_right oe_button_box']" position="inside">
+                  <button name="get_comparison_saleline_ytd" string="Compare Of YTD" type="object"/>
+               </xpath>
+           </field>
+       </record>
+
+    </data>
+</openerp>
